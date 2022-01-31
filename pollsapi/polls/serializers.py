@@ -8,8 +8,8 @@ class VoteSerializer(serializers.ModelSerializer):
         model = Vote
         field = '__all__'
 
-class ChoiceSerializer(serializer.ModelSerializer):
-    votes = VoteSerializers(many=True, required=False)
+class ChoiceSerializer(serializers.ModelSerializer):
+    votes = VoteSerializer(many=True, required=False)
     
     class Meta:
         model = Choice
