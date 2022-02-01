@@ -6,7 +6,7 @@ class VoteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Vote
-        field = '__all__'
+        fields = '__all__'
 
 class ChoiceSerializer(serializers.ModelSerializer):
     votes = VoteSerializer(many=True, required=False)
@@ -20,4 +20,4 @@ class PollSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Poll
-        field = '__all__'
+        fields = '__all__'
