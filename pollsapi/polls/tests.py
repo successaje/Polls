@@ -3,7 +3,8 @@ from rest_framework.authtoken.models import Token
 
 from urllib import request
 from django.test import TestCase
-from rest_framework.test import APITestCase, APIRequestFactory
+from rest_framework.test import APITestCase
+from rest.framework.test import APIRequestFactory
 
 from polls import apiviews
 
@@ -25,7 +26,6 @@ class TestPoll(APITestCase):
             email='testuser@test.com',
             password = 'test'
         )
-
 
     def test_list(self):
         requests = self.factory.get(self.url, HTTP_AUTHORIZATION='Token {}'.format(self.token.key))
