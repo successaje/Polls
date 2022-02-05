@@ -41,6 +41,7 @@ class CreateVote(APIView):
             'poll': pk, 
             'voted_by': voted_by
             }
+            
         serializer = VoteSerializer(data=data)
         if serializer.is_valid():
             vote = serializer.save()
