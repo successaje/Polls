@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from rest_framework.authtoken.models import Token
 
+from rest_framework.test import APIClient
+
 from urllib import request
 from django.test import TestCase
 from rest_framework.test import APITestCase
@@ -11,6 +13,7 @@ from polls import apiviews
 class TestPoll(APITestCase):
 
     def setUp(self):
+        self.client = APIClient
         self.factory = APIRequestFactory()
         self.view = apiviews.PollViewSet.as_view({'get': 'list'})
         self.url = '/polls'
