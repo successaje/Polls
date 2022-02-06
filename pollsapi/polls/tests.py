@@ -18,6 +18,10 @@ class TestPoll(APITestCase):
         self.token = Token.objects.create(user=self.user)
         self.token.save()
 
+    def test_list2(self):
+        self.client.login(username="test", password="test")
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200, 'Expected Response Code 200, received {0} instead.'.format(response.status_code))
 
     @staticmethod
     def setup_user():
