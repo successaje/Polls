@@ -5,34 +5,35 @@ jobs:
       # specify the version here
       - image: circleci/python:3.7.0
 
-      working-directory: ~/repo
+    working-directory: ~/repo
 
-      steps:
-        - checkout
+    steps:
+      - checkout
 
-        #Download and cache dependencies
-        - restore_cache:
+      #Download and cache dependencies
+      - restore_cache:
           keys:
           - v1_dependencies-{{ checksum "pollsapi/requirements.txt"}}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-        - run:
+      - run:
           name: install dependencies
           command: |
             python3 -m venv venv
             . venv/bin/activate
             pip install -r pollsapi/requirements.txt
-        - save_cache:
-        paths:
-          - ./venv
+
+      - save_cache:
+          paths:
+            - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
-        - run:
+      - run:
           name: run tests
           command: |
             . venv/bin/activate
             cd pollsapi
             python manage.py test
-        - store_artifacts:
+      - store_artifacts:
           path: test-reports
           destination: test-reports
