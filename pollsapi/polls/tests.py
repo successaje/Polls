@@ -23,6 +23,15 @@ class TestPoll(APITestCase):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200, 'Expected Response Code 200, received {0} instead.'.format(response.status_code))
 
+    def test_create(self):
+        self.client.login(username="test", password="test")
+        params = {
+            "questions": "How are you?",
+            "created_by": 1
+        }
+        response = self.client.post(self.url, params)
+        self.assertEqual()
+
     @staticmethod
     def setup_user():
         User = get_user_model()
@@ -36,4 +45,4 @@ class TestPoll(APITestCase):
         requests = self.factory.get(self.url, HTTP_AUTHORIZATION='Token {}'.format(self.token.key))
         request.user = self.user
         response = self.view(request)
-        self.assertEqual(response.status_code, 200, 'Expected Response COde 200, received {0} instead.'.format(response.status_code))
+        self.assertEqual(response.status_code, 201, 'Expected Response Code 200, received {0} instead.'.format(response.status_code))
