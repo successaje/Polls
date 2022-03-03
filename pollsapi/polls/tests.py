@@ -1,10 +1,10 @@
 from django.contrib.auth import get_user_model
-from rest_framework.authtoken.models import Token
-
 from urllib import request
 from django.test import TestCase
+
 from rest_framework.test import APITestCase
 from rest_framework.test import APIRequestFactory
+from rest_framework.authtoken.models import Token
 
 from polls import apiviews
 
