@@ -1,12 +1,12 @@
 from django.urls import path
+
+from .apiviews import PollList, PollDetail, ChoiceList, CreateVote, PollViewSet, UserCreate, LoginView
 from .views import polls_list, polls_detail
 
 from rest_framework.authtoken import views
 from rest_framework.routers import DefaultRouter
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework.documentation import include_docs_urls
-
-from .apiviews import PollList, PollDetail, ChoiceList, CreateVote, PollViewSet, UserCreate, LoginView
 
 schema_view = get_swagger_view(title='Polls API')
 
